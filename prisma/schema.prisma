@@ -1,0 +1,318 @@
+// Sokoni API schema. Mirrors the frontend's domain types
+// (Monorepo frontend/src/lib/types.ts) plus the tables the UI implies:
+// saved listings, follows, recently viewed, verification, login codes, reports.
+//
+// Development runs on SQLite (no server to install). The schema stays
+// portable to PostgreSQL: switch `provider`, the driver adapter in
+// src/prisma/prisma.service.ts, and DATABASE_URL. Arrays live in child
+// tables (ListingImage, ProductImage) because SQLite has no scalar lists.
+
+generator client {
+  provider            = "prisma-client"
+  output              = "../src/generated/prisma"
+  moduleFormat        = "esm"
+  importFileExtension = "js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  USER
+  MODERATOR
+  ADMIN
+}
+
+enum Plan {
+  FREE
+  PRO
+  BUSINESS
+}
+
+enum ListingStatus {
+  ACTIVE
+  SOLD
+  EXPIRED
+  REMOVED
+}
+
+enum Category {
+  FOR_SALE
+  HOUSING
+  JOBS
+  SERVICES
+  GIGS
+  COMMUNITY
+}
+
+enum DomainStatus {
+  NONE
+  PENDING
+  VERIFIED
+}
+
+enum VerificationStatus {
+  NOT_STARTED
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum RecentKind {
+  LISTING
+  SHOP
+}
+
+enum OtpPurpose {
+  LOGIN
+  VERIFY_PHONE
+}
+
+model User {
+  id            String   @id @default(cuid())
+  name          String
+  /// E.164-ish, digits and a leading "+". Public: it is the seller's WhatsApp contact.
+  phone         String   @unique
+  email         String?  @unique
+  avatarUrl     String?
+  /// Identity verified (ID + selfie approved). Shown as the blue rosette.
+  verified      Boolean  @default(false)
+  phoneVerified Boolean  @default(false)
+  /// 0–100, shown as the trust ring.
+  trustScore    Int      @default(50)
+  role          Role     @default(USER)
+  /// Free text such as "usually replies within an hour".
+  responseTime  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  storefront      Storefront?
+  listings        Listing[]
+  reviewsGiven    Review[]                  @relation("ReviewFrom")
+  reviewsReceived Review[]                  @relation("ReviewTo")
+  participations  ConversationParticipant[]
+  messages        Message[]
+  saved           SavedListing[]
+  follows         Follow[]
+  recentViews     RecentView[]
+  verification    Verification?
+  reports         Report[]
+}
+
+model Storefront {
+  id             String       @id @default(cuid())
+  ownerId        String       @unique
+  owner          User         @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  slug           String       @unique
+  name           String
+  bio            String       @default("")
+  logoUrl        String?
+  coverUrl       String?
+  whatsappNumber String
+  category       String
+  city           String
+  isVerified     Boolean      @default(false)
+  plan           Plan         @default(FREE)
+  /// Denormalised so seed audiences and follow/unfollow stay O(1).
+  followersCount Int          @default(0)
+  responseRate   Int          @default(0)
+  customDomain   String?      @unique
+  domainStatus   DomainStatus @default(NONE)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  products  Product[]
+  followers Follow[]
+}
+
+model Product {
+  id           String         @id @default(cuid())
+  storefrontId String
+  storefront   Storefront     @relation(fields: [storefrontId], references: [id], onDelete: Cascade)
+  title        String
+  /// Whole currency units (the UI never shows minor units).
+  price        Int
+  currency     String
+  inStock      Boolean        @default(true)
+  category     String
+  description  String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  images       ProductImage[]
+
+  @@index([storefrontId])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  position  Int
+
+  @@index([productId, position])
+}
+
+model Listing {
+  id          String        @id @default(cuid())
+  sellerId    String
+  seller      User          @relation(fields: [sellerId], references: [id], onDelete: Cascade)
+  category    Category
+  title       String
+  description String
+  /// Null means "contact for price".
+  price       Int?
+  currency    String
+  city        String
+  country     String        @default("")
+  lat         Float?
+  lng         Float?
+  status      ListingStatus @default(ACTIVE)
+  featured    Boolean       @default(false)
+  expiresAt   DateTime?
+  /// Set when a moderator removes the listing; the seller can't relist or edit it while set.
+  takenDownAt DateTime?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  images        ListingImage[]
+  savedBy       SavedListing[]
+  conversations Conversation[]
+  reports       Report[]
+
+  @@index([category, status])
+  @@index([sellerId])
+  @@index([city])
+}
+
+model ListingImage {
+  id        String  @id @default(cuid())
+  listingId String
+  listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  url       String
+  position  Int
+
+  @@index([listingId, position])
+}
+
+model Review {
+  id         String   @id @default(cuid())
+  fromUserId String
+  from       User     @relation("ReviewFrom", fields: [fromUserId], references: [id], onDelete: Cascade)
+  toUserId   String
+  to         User     @relation("ReviewTo", fields: [toUserId], references: [id], onDelete: Cascade)
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+
+  @@unique([fromUserId, toUserId])
+  @@index([toUserId])
+}
+
+model Conversation {
+  id            String                    @id @default(cuid())
+  listingId     String?
+  listing       Listing?                  @relation(fields: [listingId], references: [id], onDelete: SetNull)
+  lastMessageAt DateTime                  @default(now())
+  createdAt     DateTime                  @default(now())
+  participants  ConversationParticipant[]
+  messages      Message[]
+}
+
+model ConversationParticipant {
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  userId         String
+  user           User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  lastReadAt     DateTime?
+
+  @@id([conversationId, userId])
+  @@index([userId])
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversationId String
+  conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+  senderId       String
+  sender         User         @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  body           String
+  createdAt      DateTime     @default(now())
+
+  @@index([conversationId, createdAt])
+}
+
+model SavedListing {
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  listingId String
+  listing   Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@id([userId, listingId])
+}
+
+model Follow {
+  userId       String
+  user         User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  storefrontId String
+  storefront   Storefront @relation(fields: [storefrontId], references: [id], onDelete: Cascade)
+  createdAt    DateTime   @default(now())
+
+  @@id([userId, storefrontId])
+}
+
+model RecentView {
+  id       String     @id @default(cuid())
+  userId   String
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind     RecentKind
+  targetId String
+  viewedAt DateTime   @default(now())
+
+  @@unique([userId, kind, targetId])
+  @@index([userId, viewedAt])
+}
+
+model Verification {
+  id              String             @id @default(cuid())
+  userId          String             @unique
+  user            User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  status          VerificationStatus @default(NOT_STARTED)
+  /// Private storage keys (PRIVATE_UPLOAD_DIR), never public URLs; moderators stream them through the API.
+  idDocumentKey   String?
+  selfieKey       String?
+  submittedAt     DateTime?
+  reviewedAt      DateTime?
+  reviewNote      String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+}
+
+model OtpCode {
+  id         String     @id @default(cuid())
+  phone      String
+  purpose    OtpPurpose
+  /// SHA-256 of the code; the code itself is never stored.
+  codeHash   String
+  attempts   Int        @default(0)
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime   @default(now())
+
+  @@index([phone, purpose, createdAt])
+}
+
+model Report {
+  id         String   @id @default(cuid())
+  listingId  String
+  listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
+  reporterId String
+  reporter   User     @relation(fields: [reporterId], references: [id], onDelete: Cascade)
+  reason     String
+  details    String?
+  createdAt  DateTime @default(now())
+
+  @@unique([listingId, reporterId])
+}

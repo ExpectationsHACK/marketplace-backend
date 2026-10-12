@@ -1,0 +1,633 @@
+{
+  "users": [
+    {
+      "id": "u1",
+      "name": "Amara Chukwu",
+      "avatarUrl": "/avatars/amara.svg",
+      "phone": "+234 802 314 8890",
+      "email": "amara@amarafabrics.ng",
+      "verified": true,
+      "trustScore": 92,
+      "role": "USER",
+      "memberSince": "2022-03-11",
+      "responseTime": "usually replies within an hour"
+    },
+    {
+      "id": "u2",
+      "name": "Kwame Mensah",
+      "avatarUrl": "/avatars/kwame.svg",
+      "phone": "+233 24 771 2093",
+      "email": "kwame@kwamesneaks.gh",
+      "verified": true,
+      "trustScore": 88,
+      "role": "USER",
+      "memberSince": "2021-11-02",
+      "responseTime": "usually replies within 2 hours"
+    },
+    {
+      "id": "u3",
+      "name": "Wanjiru Kamau",
+      "avatarUrl": "/avatars/wanjiru.svg",
+      "phone": "+254 722 445 190",
+      "email": "wanjiru@wanjirubeauty.ke",
+      "verified": true,
+      "trustScore": 95,
+      "role": "USER",
+      "memberSince": "2020-06-27",
+      "responseTime": "usually replies within 30 minutes"
+    },
+    {
+      "id": "u4",
+      "name": "Tunde Bakare",
+      "avatarUrl": "/avatars/tunde.svg",
+      "phone": "+234 810 552 6671",
+      "verified": true,
+      "trustScore": 61,
+      "role": "USER",
+      "memberSince": "2024-01-19"
+    },
+    {
+      "id": "u5",
+      "name": "Grace Achieng",
+      "avatarUrl": "/avatars/grace.svg",
+      "phone": "+254 733 209 481",
+      "verified": false,
+      "trustScore": 74,
+      "role": "USER",
+      "memberSince": "2023-08-04"
+    },
+    {
+      "id": "u6",
+      "name": "Ibrahim Sule",
+      "avatarUrl": "/avatars/ibrahim.svg",
+      "phone": "+234 706 118 2039",
+      "verified": false,
+      "trustScore": 45,
+      "role": "USER",
+      "memberSince": "2025-02-14"
+    }
+  ],
+  "storefronts": [
+    {
+      "id": "s1",
+      "ownerId": "u1",
+      "slug": "amara-fabrics",
+      "name": "Amara Fabrics & Ankara",
+      "bio": "Hand-picked Ankara, lace, and adire from Lagos tailors. Custom cuts by the yard, same-week delivery across Nigeria.",
+      "logoUrl": "/storefronts/amara-logo.svg",
+      "coverUrl": "/storefronts/amara-cover.svg",
+      "whatsappNumber": "+234 802 314 8890",
+      "category": "Fashion & Fabric",
+      "city": "Lagos, Nigeria",
+      "isVerified": true,
+      "plan": "BUSINESS",
+      "productIds": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ],
+      "followers": 4218,
+      "responseRate": 97,
+      "domainStatus": "NONE"
+    },
+    {
+      "id": "s2",
+      "ownerId": "u2",
+      "slug": "kwame-sneaks",
+      "name": "Kwame Sneaks",
+      "bio": "Verified authentic sneakers and streetwear, sourced and inspected in Accra. Swap, resell, and pre-order drops.",
+      "logoUrl": "/storefronts/kwame-logo.svg",
+      "coverUrl": "/storefronts/kwame-cover.svg",
+      "whatsappNumber": "+233 24 771 2093",
+      "category": "Sneakers & Streetwear",
+      "city": "Accra, Ghana",
+      "isVerified": true,
+      "plan": "PRO",
+      "productIds": [
+        "p5",
+        "p6",
+        "p7"
+      ],
+      "followers": 2871,
+      "responseRate": 91,
+      "domainStatus": "NONE"
+    },
+    {
+      "id": "s3",
+      "ownerId": "u3",
+      "slug": "wanjiru-beauty",
+      "name": "Wanjiru Natural Beauty",
+      "bio": "Small-batch shea, black soap, and natural haircare made in Nairobi. Wholesale packs available for salons.",
+      "logoUrl": "/storefronts/wanjiru-logo.svg",
+      "coverUrl": "/storefronts/wanjiru-cover.svg",
+      "whatsappNumber": "+254 722 445 190",
+      "category": "Beauty & Wellness",
+      "city": "Nairobi, Kenya",
+      "isVerified": true,
+      "plan": "PRO",
+      "productIds": [
+        "p8",
+        "p9",
+        "p10"
+      ],
+      "followers": 6033,
+      "responseRate": 99,
+      "domainStatus": "NONE"
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "storefrontId": "s1",
+      "title": "Premium Ankara — 6 yards",
+      "price": 18500,
+      "currency": "NGN",
+      "images": [],
+      "inStock": true,
+      "category": "Fabric",
+      "description": "Wax-print Ankara, 6 yards, wide range of colourways. Ideal for aso-ebi sets.",
+      "createdAt": "2026-06-02"
+    },
+    {
+      "id": "p2",
+      "storefrontId": "s1",
+      "title": "Handwoven Aso-Oke Gele",
+      "price": 9500,
+      "currency": "NGN",
+      "images": [],
+      "inStock": true,
+      "category": "Accessories",
+      "description": "Traditional handwoven gele, pre-shaped and starched, ready to wear.",
+      "createdAt": "2026-05-20"
+    },
+    {
+      "id": "p3",
+      "storefrontId": "s1",
+      "title": "Custom Ankara Kaftan (made to order)",
+      "price": 26000,
+      "currency": "NGN",
+      "images": [],
+      "inStock": true,
+      "category": "Ready to Wear",
+      "description": "Tell us your size on WhatsApp — turnaround is 5 working days.",
+      "createdAt": "2026-07-08"
+    },
+    {
+      "id": "p4",
+      "storefrontId": "s1",
+      "title": "Adire Tie-Dye Wrapper Set",
+      "price": 15000,
+      "currency": "NGN",
+      "images": [],
+      "inStock": false,
+      "category": "Fabric",
+      "description": "Indigo adire wrapper, two-piece set. Restocking in 2 weeks.",
+      "createdAt": "2026-04-11"
+    },
+    {
+      "id": "p5",
+      "storefrontId": "s2",
+      "title": "Air Max 97 — 'Silver Bullet' (UK9)",
+      "price": 1450,
+      "currency": "GHS",
+      "images": [],
+      "inStock": true,
+      "category": "Sneakers",
+      "description": "Verified authentic, box included, worn twice. Receipt on request.",
+      "createdAt": "2026-06-27"
+    },
+    {
+      "id": "p6",
+      "storefrontId": "s2",
+      "title": "Yeezy Boost 350 V2 'Zebra' (UK8)",
+      "price": 2600,
+      "currency": "GHS",
+      "images": [],
+      "inStock": true,
+      "category": "Sneakers",
+      "description": "Deadstock, never worn. Authentication card included.",
+      "createdAt": "2026-07-01"
+    },
+    {
+      "id": "p7",
+      "storefrontId": "s2",
+      "title": "Vintage Varsity Jacket",
+      "price": 480,
+      "currency": "GHS",
+      "images": [],
+      "inStock": true,
+      "category": "Streetwear",
+      "description": "One-of-one thrifted piece, size M. DM for measurements.",
+      "createdAt": "2026-05-15"
+    },
+    {
+      "id": "p8",
+      "storefrontId": "s3",
+      "title": "Whipped Shea Butter — 500g",
+      "price": 1200,
+      "currency": "KES",
+      "images": [],
+      "inStock": true,
+      "category": "Skincare",
+      "description": "Unrefined shea, whipped with baobab oil. No fragrance added.",
+      "createdAt": "2026-03-30"
+    },
+    {
+      "id": "p9",
+      "storefrontId": "s3",
+      "title": "Black Soap Bar — pack of 3",
+      "price": 850,
+      "currency": "KES",
+      "images": [],
+      "inStock": true,
+      "category": "Skincare",
+      "description": "Traditional cold-pressed black soap, unscented and sensitive-skin safe.",
+      "createdAt": "2026-06-09"
+    },
+    {
+      "id": "p10",
+      "storefrontId": "s3",
+      "title": "Rosemary & Castor Hair Oil",
+      "price": 1600,
+      "currency": "KES",
+      "images": [],
+      "inStock": true,
+      "category": "Haircare",
+      "description": "Cold-pressed castor with rosemary infusion. 100ml bottle.",
+      "createdAt": "2026-07-15"
+    }
+  ],
+  "listings": [
+    {
+      "id": "l1",
+      "sellerId": "u4",
+      "category": "FOR_SALE",
+      "title": "iPhone 13 Pro, 256GB — barely used",
+      "description": "Bought new in January, screen protector on since day one, no scratches. Comes with original box and charger. Battery health 96%.",
+      "price": 380000,
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 6.5244,
+        "lng": 3.3792,
+        "city": "Lagos",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-09-01",
+      "featured": true
+    },
+    {
+      "id": "l2",
+      "sellerId": "u4",
+      "category": "HOUSING",
+      "title": "2 bedroom apartment, Lekki Phase 1",
+      "description": "Newly renovated, all rooms en-suite, 24-hour power backup, secure estate with gate access. Agreement + agency fees apply.",
+      "price": 1200000,
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 6.4432,
+        "lng": 3.4732,
+        "city": "Lagos",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-22"
+    },
+    {
+      "id": "l3",
+      "sellerId": "u1",
+      "category": "JOBS",
+      "title": "Hiring: Social media manager (part-time)",
+      "description": "Amara Fabrics is looking for someone to run our Instagram and TikTok, 15 hrs/week. Fashion or retail experience preferred.",
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 6.5244,
+        "lng": 3.3792,
+        "city": "Lagos",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-30"
+    },
+    {
+      "id": "l4",
+      "sellerId": "u5",
+      "category": "SERVICES",
+      "title": "Professional event photography",
+      "description": "5 years shooting weddings, owambe, and corporate events across Nairobi. Packages from 2 hours. Portfolio on request.",
+      "price": 15000,
+      "currency": "KES",
+      "images": [],
+      "location": {
+        "lat": -1.2921,
+        "lng": 36.8219,
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-07-19"
+    },
+    {
+      "id": "l5",
+      "sellerId": "u6",
+      "category": "GIGS",
+      "title": "Need a mover for weekend, 2 hours",
+      "description": "Moving a couch, bed frame, and about 10 boxes from Wuse to Jabi. Own van preferred, will pay cash on completion.",
+      "price": 8000,
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 9.0579,
+        "lng": 7.4951,
+        "city": "Abuja",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-09-03"
+    },
+    {
+      "id": "l6",
+      "sellerId": "u5",
+      "category": "COMMUNITY",
+      "title": "Free furniture — moving out this week",
+      "description": "Giving away a dining table, 2 chairs, and a bookshelf. First come first served, pick-up only from Kilimani.",
+      "currency": "KES",
+      "images": [],
+      "location": {
+        "lat": -1.2921,
+        "lng": 36.7833,
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-09-05"
+    },
+    {
+      "id": "l7",
+      "sellerId": "u6",
+      "category": "FOR_SALE",
+      "title": "Toyota Vitz 2015, clean title",
+      "description": "Registered, fabric interior in great shape, recently serviced with new brake pads. Reason for sale: relocating.",
+      "price": 3200000,
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 9.0765,
+        "lng": 7.3986,
+        "city": "Abuja",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-14"
+    },
+    {
+      "id": "l8",
+      "sellerId": "u3",
+      "category": "FOR_SALE",
+      "title": "MacBook Air M2, 512GB — Space Grey",
+      "description": "Used lightly for a year, comes with charger and a sleeve. No dents or cracks. Selling to fund a new setup.",
+      "price": 145000,
+      "currency": "KES",
+      "images": [],
+      "location": {
+        "lat": -1.286,
+        "lng": 36.8172,
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-27",
+      "featured": true
+    },
+    {
+      "id": "l9",
+      "sellerId": "u3",
+      "category": "HOUSING",
+      "title": "Bedsitter to let, Kilimani",
+      "description": "Furnished bedsitter, water included, walking distance to Yaya Centre. Available from next month.",
+      "price": 22000,
+      "currency": "KES",
+      "images": [],
+      "location": {
+        "lat": -1.2906,
+        "lng": 36.7876,
+        "city": "Nairobi",
+        "country": "Kenya"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-09-02"
+    },
+    {
+      "id": "l10",
+      "sellerId": "u2",
+      "category": "SERVICES",
+      "title": "Home cleaning & laundry, weekly plans",
+      "description": "Trusted team of 3, background-checked. Weekly or bi-weekly plans available across greater Accra.",
+      "price": 250,
+      "currency": "GHS",
+      "images": [],
+      "location": {
+        "lat": 5.6037,
+        "lng": -0.187,
+        "city": "Accra",
+        "country": "Ghana"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-05"
+    },
+    {
+      "id": "l11",
+      "sellerId": "u2",
+      "category": "JOBS",
+      "title": "Barista wanted, Osu",
+      "description": "Full-time barista for a specialty coffee shop, prior latte-art experience a plus. Training provided.",
+      "currency": "GHS",
+      "images": [],
+      "location": {
+        "lat": 5.5558,
+        "lng": -0.1738,
+        "city": "Accra",
+        "country": "Ghana"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-08-29"
+    },
+    {
+      "id": "l12",
+      "sellerId": "u4",
+      "category": "FOR_SALE",
+      "title": "Handmade leather sandals (bulk lot of 12 pairs)",
+      "description": "Assorted sizes 38-44, genuine leather, made in Aba. Great for resale. Price is for the full lot.",
+      "price": 96000,
+      "currency": "NGN",
+      "images": [],
+      "location": {
+        "lat": 6.5244,
+        "lng": 3.3792,
+        "city": "Lagos",
+        "country": "Nigeria"
+      },
+      "status": "ACTIVE",
+      "createdAt": "2026-09-06",
+      "featured": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": "r1",
+      "fromUserId": "u5",
+      "toUserId": "u1",
+      "rating": 5,
+      "comment": "Fabric quality was even better than the photos. Fast delivery to Nairobi too!",
+      "createdAt": "2026-06-10"
+    },
+    {
+      "id": "r2",
+      "fromUserId": "u6",
+      "toUserId": "u1",
+      "rating": 5,
+      "comment": "Amara made a custom kaftan for my traditional wedding, it fit perfectly.",
+      "createdAt": "2026-05-02"
+    },
+    {
+      "id": "r3",
+      "fromUserId": "u4",
+      "toUserId": "u2",
+      "rating": 4,
+      "comment": "Sneakers were authentic and well packaged. Shipping took a bit longer than expected.",
+      "createdAt": "2026-07-05"
+    },
+    {
+      "id": "r4",
+      "fromUserId": "u5",
+      "toUserId": "u3",
+      "rating": 5,
+      "comment": "My skin has never felt better. Ordering the black soap in bulk from now on.",
+      "createdAt": "2026-04-18"
+    },
+    {
+      "id": "r5",
+      "fromUserId": "u1",
+      "toUserId": "u4",
+      "rating": 3,
+      "comment": "Item was as described but took two reschedules to arrange pickup.",
+      "createdAt": "2026-08-01"
+    }
+  ],
+  "conversations": [
+    {
+      "id": "c1",
+      "listingId": "l1",
+      "participantIds": [
+        "u4",
+        "u5"
+      ],
+      "messages": [
+        {
+          "id": "m1",
+          "conversationId": "c1",
+          "senderId": "u5",
+          "body": "Hi, is the iPhone still available?",
+          "createdAt": "2026-09-02T08:50:00Z"
+        },
+        {
+          "id": "m2",
+          "conversationId": "c1",
+          "senderId": "u4",
+          "body": "Yes it is! Battery health is 96%, happy to do a video call to show it.",
+          "createdAt": "2026-09-02T08:55:00Z"
+        },
+        {
+          "id": "m3",
+          "conversationId": "c1",
+          "senderId": "u5",
+          "body": "Great, I'll take it — can you ship to Nairobi? I'll pay on delivery.",
+          "createdAt": "2026-09-02T09:14:00Z"
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "listingId": "l12",
+      "participantIds": [
+        "u1",
+        "u4"
+      ],
+      "messages": [
+        {
+          "id": "m4",
+          "conversationId": "c2",
+          "senderId": "u1",
+          "body": "Are the sandals still in stock? I'd like all 12 pairs for my storefront.",
+          "createdAt": "2026-09-06T12:00:00Z"
+        },
+        {
+          "id": "m5",
+          "conversationId": "c2",
+          "senderId": "u4",
+          "body": "Yes, all 12 available. I can deliver to your Lagos shop this week.",
+          "createdAt": "2026-09-06T12:20:00Z"
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "participantIds": [
+        "u1",
+        "u3"
+      ],
+      "messages": [
+        {
+          "id": "m6",
+          "conversationId": "c3",
+          "senderId": "u3",
+          "body": "Loved the aso-oke gele I got from you last month — do you do wholesale?",
+          "createdAt": "2026-08-25T16:00:00Z"
+        },
+        {
+          "id": "m7",
+          "conversationId": "c3",
+          "senderId": "u1",
+          "body": "Thank you! Yes, from 20 pieces we do 15% off. I'll send you the wholesale catalog.",
+          "createdAt": "2026-08-25T16:10:00Z"
+        }
+      ]
+    }
+  ],
+  "categories": {
+    "FOR_SALE": {
+      "label": "For Sale",
+      "blurb": "Electronics, vehicles, furniture & more",
+      "color": "#e13300"
+    },
+    "HOUSING": {
+      "label": "Housing",
+      "blurb": "Rentals, shortlets & land",
+      "color": "#1e3264"
+    },
+    "JOBS": {
+      "label": "Jobs",
+      "blurb": "Full-time, part-time & hiring posts",
+      "color": "#8400e7"
+    },
+    "SERVICES": {
+      "label": "Services",
+      "blurb": "Book trusted local professionals",
+      "color": "#27856a"
+    },
+    "GIGS": {
+      "label": "Gigs",
+      "blurb": "One-off tasks & quick errands",
+      "color": "#dc148c"
+    },
+    "COMMUNITY": {
+      "label": "Community",
+      "blurb": "Free stuff, events & announcements",
+      "color": "#477d95"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+node_modules
+dist
+*.tsbuildinfo
+coverage
+
+# Keep environment variables out of version control
+.env
+
+/src/generated/prisma
+
+# Local SQLite databases (dev and the e2e suite)
+*.db
+*.db-journal
+
+# Uploaded files
+/uploads
+/test-uploads
+/private-uploads
+/test-private-uploads
